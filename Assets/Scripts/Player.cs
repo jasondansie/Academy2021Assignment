@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         
         Color[] randColor2 = gameManager.GetComponent<GM>().colors2; //gets a reference to the color arry 
 
-        GetComponent<Renderer>().material.color = randColor2[Random.Range(1, randColor2.Length - 1)]; // picks a random color from array and assignes it
+        GetComponent<SpriteRenderer>().color = randColor2[Random.Range(0, randColor2.Length)]; // picks a random color from array and assignes it
        
 
     }
@@ -40,40 +40,35 @@ public class Player : MonoBehaviour
         {
             Debug.Log("currentPos: " + transform.position);
 
-            Debug.Log("newPosition: " + newPosition);
-            
-           
+            Debug.Log("newPosition: " + newPosition);           
 
             rb.velocity = Vector2.up * velocity;
         }
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
-        if (pos.y < 0.02) {
-            Debug.Log("I am below the camera's view.");
+        if (pos.y < 0.02) {           
             audioSource.PlayOneShot(clip, volume);
             Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
-
-        }
-        
-
+        }       
     }
 
-    /*
-    void OnBecameInvisible()
+     void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        if (rb.position.y < (newPosition.y - (-15.9))) // so the player death only happens at the bottom
+        Debug.Log("my color" + gameObject.GetComponent<SpriteRenderer>().color);
+        Debug.Log("circle color" + collision.GetComponent<SpriteRenderer>().color);
+        Debug.Log(collision.gameObject.name + " : " + gameObject.name);
+
+        if (collision.tag != "Star")
         {
-            audioSource.PlayOneShot(clip, volume);
-            Instantiate(destroyEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-      
+            if (gameObject.GetComponent<SpriteRenderer>().color != collision.GetComponent<SpriteRenderer>().color)
+            {
+                Debug.Log("Blowing up now");
+                Instantiate(destroyEffect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
 
-      
-    }
-
-    */
-}
+        }      
+    }     
+ }

@@ -43,7 +43,7 @@ public class StarDestroy : MonoBehaviour
         */
         Destroy(gameObject);
       
-        gameManager.GetComponent<GM>().respawn(new Vector3(0, 15f, 0));
+        gameManager.GetComponent<GM>().spawnStar(new Vector3(0, 15f, 0));
 
     }
 

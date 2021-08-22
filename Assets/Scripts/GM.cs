@@ -7,18 +7,15 @@ public class GM : MonoBehaviour
     public int score = 0;
 
     public GameObject newStar;
-    public GameObject newArc;
+    public GameObject circleTopLeft;
+    public GameObject circleTopRight;
+    public GameObject circleBottomLeft;
+    public GameObject circleBottomRight;
     public GameObject rotationPoint;
     public GameObject scoreText;
 
     public Vector3 myScreenPos;
 
-  
-
-    private float circleRightTopX = 2.3f;
-    private float circleRightBottomX = -2.23f;
-    private float circleLefttopX = -2.23f;
-    private float circleLeftBottomX = -2.23f;
 
     
     public Color[] colors2 = new Color[] { Color.red, Color.green, Color.blue, Color.magenta};
@@ -26,6 +23,7 @@ public class GM : MonoBehaviour
     private void Start()
     {
         spawnStar(new Vector3(0,6.41f,0));
+        spawnCircle();
     }
 
     private void Update()
@@ -36,22 +34,22 @@ public class GM : MonoBehaviour
 
     private void spawnCircle()
     {
-        spawnPrefab(newArc, new Vector3(-2.23f, 8.76f, 0)); //top left
-        spawnPrefab(newArc, new Vector3(2.36f, 8.76f, 180)); //top right
-        spawnPrefab(newArc, new Vector3(-2.23f, 3.94f, 0)); //bottom left
-        spawnPrefab(newArc, new Vector3(2.26f, 3.94f, 0)); //bottom right
-        spawnPrefab(rotationPoint, new Vector3(-0.02f, 6.41f, 0)); //bottom right
+        spawnPrefab(circleTopLeft, new Vector3(-2.23f, 8.76f, 0), Quaternion.Euler(0, 0, 0)); //top left
+        spawnPrefab(circleTopRight, new Vector3(2.36f, 8.76f, 0), Quaternion.Euler(0, 0, 270)); //top right
+        spawnPrefab(circleBottomLeft, new Vector3(-2.23f, 3.94f, 0), Quaternion.Euler(0, 0, 90)); //bottom left
+        spawnPrefab(circleBottomRight, new Vector3(2.26f, 3.94f, 0), Quaternion.Euler(0, 0, 180)); //bottom right
+        spawnPrefab(rotationPoint, new Vector3(-0.02f, 6.41f, 0), Quaternion.identity); //rotation point
 
     }
 
-    private void spawnStar(Vector3 spawnPoint)
+    public void spawnStar(Vector3 spawnPoint)
     {
-        spawnPrefab(newStar, spawnPoint);
+        spawnPrefab(newStar, spawnPoint, Quaternion.identity);
     }
 
-    public void spawnPrefab(GameObject prefab , Vector3 spawnPoint)
+    private void spawnPrefab(GameObject prefab , Vector3 spawnPoint, Quaternion rotation)
     {     
-        Instantiate(prefab, spawnPoint, Quaternion.identity);
+        Instantiate(prefab, spawnPoint, rotation);
     }
 
 }
