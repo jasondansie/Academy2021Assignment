@@ -11,18 +11,24 @@ public class Player : MonoBehaviour
     public AudioClip clip;
     public float volume = 1.5f;
 
-    public GameObject gameManager;
+    private GameObject gameManager;
 
     private Rigidbody2D rb;
     private Vector3 newPosition;
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager"); // gets reference to the gamemanager gameobject
 
         
+        Color[] randColor2 = gameManager.GetComponent<GM>().colors2; //gets a reference to the color arry 
+
+        GetComponent<Renderer>().material.color = randColor2[Random.Range(1, randColor2.Length - 1)]; // picks a random color from array and assignes it
+       
+
     }
 
     // Update is called once per frame
