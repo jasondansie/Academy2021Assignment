@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3652636486271620043}
   - component: {fileID: 3652636486271620042}
   - component: {fileID: 3652636486271620045}
+  - component: {fileID: -4282044054537855468}
   m_Layer: 0
   m_Name: ColorSwitcher
   m_TagString: ColorSwitcher
@@ -113,3 +114,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.545
+--- !u!114 &-4282044054537855468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652636486271620041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df4aad94a8c9c499337c2a77b4d6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
