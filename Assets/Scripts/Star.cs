@@ -42,7 +42,7 @@ public class Star : MonoBehaviour
         //audioSource.Play();
         gameManager.GetComponent<GM>().score += 1;
         */
-        Destroy(gameObject);
+       // Destroy(gameObject);
 
         respawn();
         
@@ -58,6 +58,6 @@ public class Star : MonoBehaviour
         }
         Instantiate(newStar, new Vector3(0, 0.41f, 0), Quaternion.identity);
 
-        newStar.GetComponent<CircleCollider2D>().enabled = true;
+       // newStar.GetComponent<CircleCollider2D>().enabled = true;
     }
 }
